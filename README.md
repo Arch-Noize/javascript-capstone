@@ -123,9 +123,19 @@ npx eslint .
   <!-- AUTHORS -->
 
 ## 👥 Author <a name="authors"></a>
+👤 **Mumbere Habert**
+
+- GitHub: [@mumbereh](https://github.com/mumbereh)
+- LinkedIn: [Mumbere Habert](https://www.linkedin.com/in/mumbere-habert-33898a255)
+
+👤 **Pushkar Gautam**
+
+- GitHub: [@pushkar1995](https://github.com/pushkar1995)
+- LinkedIn: [Pushkar Gautam](https://www.linkedin.com/in/pushkar-gautam-94a385271/)
+
 👤 **Santiago Ruido**
 
-- GitHub: [Arch-Noize](https://github.com/Arch-Noize)
+- GitHub: [@Arch-Noize](https://github.com/Arch-Noize)
 - LinkedIn: [Santiago Ruido](https://www.linkedin.com/in/santiago-ruido-a1404880/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
