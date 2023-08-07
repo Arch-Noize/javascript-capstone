@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* Universal Selectors */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Varela Round', 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+input[type="text"] {
+  border: none;
+  font-size: 1em;
+}
+
+input::placeholder {
+  border: none;
+  font-size: 1em;
+  font-style: italic;
+}
+
+button {
+  border: none;
+  padding: 0.5em;
+  border: 2px solid black;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #d0d0d0;
+}
+
+button:active {
+  background-color: #999999;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+}
+
+li {
+  padding: 0.2em;
+  margin-bottom: 5px;
+}
+
+/* Styling */
+
+.container {
+  padding: 0.5em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 0.8em;
+  padding: 1.3em;
+  text-align: center;
+  border-top: 2px solid #000;
+}
