@@ -1,1 +1,1 @@
-# javascript-capstopne
+# javascript-capstone
