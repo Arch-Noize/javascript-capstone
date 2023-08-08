@@ -1,15 +1,29 @@
-import { invAPI , getPokemon } from "./api.js";
+import { invAPI } from './api.js';
 
-const list = document.querySelector(".pokemon-data");
-const test = document.querySelector(".test");
+const commentURL = invAPI + 'comments?item_id=';
 
-const displayPoke = async () => {
-    const pokemon = await getPokemon();
-    // console.log(pokemon[1].name);
-    // for (let i = 0; i <= 10; i++){
-        list.innerHTML += `<li class="score">${pokemon.name}</li>`
-        console.log(pokemon.name);
-    // }
-}
+const getComment = async (id) => {
+  const res = await fetch(commentURL + id);
+  const data = await res.json();
+  console.log(data.result);
+  return data.result;
+};
 
-test.addEventListener('click', displayPoke());
+// const displayComment = async () => {
+//   const commentList = await getComment();
+//   commentList.forEach((item) => {
+
+//   })
+// }
+
+const addComment = async (id, user, desc) => {
+  const res = await fetch(commentURL+id, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+    body: JSON.stringify({ item_id: id, username: user, comment: desc }),
+  });
+  const data = await res.json();
+  return data.result;
+};
+
+export {getComment, addComment}

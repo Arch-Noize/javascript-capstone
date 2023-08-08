@@ -7,4 +7,4 @@ const getPokemon = async (id) => {
   return data;
 };
 
-export { invAPI , pokeAPI , getPokemon };
+export { invAPI, pokeAPI, getPokemon };
