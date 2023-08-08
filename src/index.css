@@ -70,3 +70,22 @@ li {
   border-top: 2px solid #000;
 }
 
+/* Comment Pop-up */
+
+.comment-card {
+  position: fixed;
+  width: 420px;
+  max-width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 3em;
+  z-index: 10;
+  transition: all 0.6s ease-in-out;
+  backdrop-filter: blur(6px);
+}
