@@ -3,33 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="index.css">
-    <title>Capstone DnD</title>
+    <title>Capstone</title>
 <script defer src="runtime.js"></script><script defer src="main.js"></script></head>
 <body>
     <header class="container">
-        <ul>
-           <li><img src="./assets/d20.png"></li> 
-           <li>Lorem</li>
-           <li>Ipsum</li>
-           <li>Dolor</li>
-        </ul>
+        <nav>
+            <ul>
+                <li>Comments</li>
+                <li>Reservation</li>
+                <li>Likes</li>
+            </ul>
+        </nav>
     </header>
-    <div class="item">
-        <h3>Item 1</h3>
-        <p>Likes: <span class="likesCount" data-item="item1">0</span></p>
-        <button class="likeButton" id="likeButton1" data-item="item1">
-            <i class="fa fa-thumbs-up"></i> <!-- Font Awesome thumbs-up icon -->
-        </button>
-    <div class="item">
-        <h3>Item 2</h3>
-        <p>Likes: <span class="likesCount" data-item="item2">0</span></p>
-        <button class="likeButton" id="likeButton2" data-item="item2">
-            <i class="fa fa-thumbs-up"></i> <!-- Font Awesome thumbs-up icon -->
-        </button>
-    </div>
+    <div class="itemsContainer"></div>
     <footer class="container footer">
         Created by Santiago Ruido, Pushkar Gautam, and Mumbere Habert under the MIT license.
     </footer>
+    
+    <script src="index.js"></script>
 </body>
 </html>

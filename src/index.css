@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-/* Universal Selectors */
-* {
+Universal Selectors 
+*{
   box-sizing: border-box;
   font-family: 'Varela Round', 'Times New Roman', Times, serif;
   font-weight: 600;
@@ -43,7 +43,7 @@ li {
   margin-bottom: 5px;
 }
 
-/* Styling */
+
 .fa fa-thumbs-up{
   font-size: 100px;
 }
@@ -68,3 +68,46 @@ li {
   margin: 20px;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.itemsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.like {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 30%;
+  box-sizing: border-box;
+}
+
+.like h3 {
+  margin: 0;
+}
+
+.likesCount {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.likeButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.likeButton {
+  font-size: 20px;
+}
