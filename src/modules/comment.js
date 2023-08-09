@@ -5,8 +5,7 @@ const commentURL = invAPI + 'comments?item_id=';
 const getComment = async (id) => {
   const res = await fetch(commentURL + id);
   const data = await res.json();
-  console.log(data.result);
-  return data.result;
+  return data;
 };
 
 // const displayComment = async () => {

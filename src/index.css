@@ -42,10 +42,7 @@ ul {
   gap: 8px;
 }
 
-li {
-  padding: 0.2em;
-  margin-bottom: 5px;
-}
+
 
 /* Styling */
 
@@ -101,4 +98,12 @@ li {
 
 .comment-section > * {
   margin-bottom: 20px;
+}
+
+#comment-list {
+  flex-wrap: wrap;
+}
+
+#comment-list li {
+  margin-bottom: 5px;
 }

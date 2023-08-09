@@ -2,22 +2,31 @@ import './index.css';
 import { getPokemon } from './modules/api.js';
 import { getComment , addComment } from './modules/comment';
 
-const list = document.querySelector('.pokemon-data');
+const pokeData = document.querySelector('#pokemon-data');
 const newComment = document.querySelector('#add-comment');
 const commentForm = document.querySelector('.comment-section');
 const test = document.querySelector('.test');
 const popup = document.querySelector('#popup');
 const closeBtn = document.querySelector("#close-btn");
+const list = document.querySelector("#comment-list");
 
 const displayPoke = async () => {
   for (let i = 1; i <= 10; i += 1) {
     const pokemon = await getPokemon(i);
-    list.innerHTML += `<li class="score">${pokemon.name}</li>`;
+    pokeData.innerHTML += `<li class="score">${pokemon.name}</li>`;
   }
 };
 
+const displayComment = async () => {
+  const commentList = await getComment("item3");
+  commentList.forEach((item) => {
+    list.innerHTML+= `<li> ${item.username}: ${item.comment} (${item.creation_date})`
+  })
+}
+
 test.addEventListener('click', () => {
     popup.classList.remove("overlay");
+    displayComment();
 });
 
 closeBtn.addEventListener('click', () => {
@@ -30,11 +39,12 @@ newComment.addEventListener('click', async (e) => {
     const comment = document.querySelector('#comment').value;
     if (!commentor || !comment) {
       e.preventDefault();
+      console.log("oops!");
     } else {
       await addComment("item3", commentor, comment);
-      await getComment("item3")
       commentForm.reset();
     }
+
 });
 
-// document.addEventListener("DOMContentLoaded", getComment("item3"));
+document.addEventListener("DOMContentLoaded", getComment("item3"));
