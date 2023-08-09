@@ -18,7 +18,7 @@ const displayPoke = async () => {
 };
 
 const displayComment = async () => {
-  const commentList = await getComment("item3");
+  const commentList = await getComment("item2");
   commentList.forEach((item) => {
     list.innerHTML+= `<li> ${item.username}: ${item.comment} (${item.creation_date})`
   })
@@ -26,7 +26,6 @@ const displayComment = async () => {
 
 test.addEventListener('click', () => {
     popup.classList.remove("overlay");
-    displayComment();
 });
 
 closeBtn.addEventListener('click', () => {
@@ -41,10 +40,9 @@ newComment.addEventListener('click', async (e) => {
       e.preventDefault();
       console.log("oops!");
     } else {
-      await addComment("item3", commentor, comment);
+      await addComment("item2", commentor, comment);
       commentForm.reset();
     }
-
 });
 
-document.addEventListener("DOMContentLoaded", getComment("item3"));
+document.addEventListener("DOMContentLoaded", displayComment());
