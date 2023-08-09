@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 /* Universal Selectors */
-
 * {
   box-sizing: border-box;
   font-family: 'Varela Round', 'Times New Roman', Times, serif;
@@ -10,11 +9,6 @@
 
 *:focus {
   outline: none !important;
-}
-
-input[type="text"] {
-  border: none;
-  font-size: 1em;
 }
 
 input::placeholder {
@@ -26,7 +20,6 @@ input::placeholder {
 button {
   border: none;
   padding: 0.5em;
-  border: 2px solid black;
   background-color: #fff;
   transition: all 0.3s ease-in-out;
 }
@@ -51,22 +44,27 @@ li {
 }
 
 /* Styling */
-
-.container {
-  padding: 0.5em;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+.fa fa-thumbs-up{
+  font-size: 100px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  font-size: 0.8em;
-  padding: 1.3em;
-  text-justify: center;
-  border-top: 2px solid #000;
+.item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.item {
+
+  padding: 1em;
+  background-color: #f0f0f0;
+}
+
+.columns-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px;
 }
 
