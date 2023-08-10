@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="index.css">
     <title>Capstone</title>
 </head>
+
 <body>
     <header class="container">
         <nav>
             <ul>
-                <li><img src="./assets/d20.png"></li> 
+                <li><img src="./assets/d20.png"></li>
                 <li>Lorem</li>
                 <li>Ipsum</li>
                 <li>Dolor</li>
@@ -19,10 +21,35 @@
         </nav>
     </header>
     <h1>This is a test!</h1>
-    <button>Press Me!</button>
+    <button>Press for Comments!</button>
+    <br />
+    <br />
+    <button>Press for Reservation</button>
+
+    <div class="overlay" id="popup">
+        <div class="comment-card">
+            <h3>
+                Pokemon <span><i id="close-btn" class="fa fa-times"></i></span>
+            </h3>
+            <img src="./assets/d20.png">
+            Stats
+            <ul class="pokestats">
+
+            </ul>
+            <div>
+                <form class="reservation-section">
+                    <input type="text" id="reservationName" placeholder="Your Name">
+                    <input type="date" id="startDate" placeholder="Start Date">
+                    <input type="date" id="endDate" placeholder="End Date">
+                </form>
+                <button id="add-comment">Reserve</button>
+            </div>
+        </div>
+    </div>
 
     <footer class="container footer">
         Created by Santiago Ruido, Pushkar Gautam, and Mumbere Habert under the MIT license.
     </footer>
 </body>
+
 </html>
