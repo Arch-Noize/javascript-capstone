@@ -18,10 +18,14 @@ const displayPoke = async () => {
 };
 
 const displayComment = async () => {
-  const commentList = await getComment("item4");
-  commentList.forEach((item) => {
+  const commentList = await getComment("item5");
+  if (Object.keys(commentList).length = 0){
+    list.innerHTML = '';
+  } else {
+    commentList.forEach((item) => {
     list.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
-  })
+    })
+};
 }
 
 commentBtn.addEventListener('click', () => {
@@ -44,8 +48,9 @@ newComment.addEventListener('click', (e) => {
       e.preventDefault();
       console.log("oops!");
     } else {
-      addComment("item4", commentor, comment);
+      addComment("item5", commentor, comment);
       list.innerHTML = '';
+      getComment();
       displayComment();
       commentForm.reset();
     }
