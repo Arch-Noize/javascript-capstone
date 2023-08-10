@@ -66,9 +66,9 @@ li {
   border-top: 2px solid #000;
 }
 
-/* Comment Pop-up */
+/* Reservation Pop-up */
 
-/* .overlay {
+.reservation-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -78,7 +78,7 @@ li {
   transform: scale(0);
   transition: all 0.6s ease-in-out;
   backdrop-filter: blur(6px);
-} */
+}
 
 .reservation-card {
   position: fixed;

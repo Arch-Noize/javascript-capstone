@@ -12,9 +12,8 @@ const getReservation = async (id) => {
 // const displayReservation = async () => {
 //   const reservationList = await getReservation();
 //   reservationList.forEach((item) => {
-
-//   })
-// }
+//   });
+// };
 
 const addReservation = async (id, name, dateStart, dateEnd) => {
   const res = await fetch(reservationURL + id, {
