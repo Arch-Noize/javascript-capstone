@@ -13,14 +13,14 @@ const list = document.querySelector("#comment-list");
 const displayPoke = async () => {
   for (let i = 1; i <= 10; i += 1) {
     const pokemon = await getPokemon(i);
-    pokeData.innerHTML += `<li class="score">${pokemon.name}</li>`;
+    pokeData.innerHTML += `<li class="poke">${pokemon.name}</li>`;
   }
 };
 
 const displayComment = async () => {
   const commentList = await getComment("item2");
   commentList.forEach((item) => {
-    list.innerHTML+= `<li> ${item.username}: ${item.comment} (${item.creation_date})`
+    list.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
   })
 }
 
