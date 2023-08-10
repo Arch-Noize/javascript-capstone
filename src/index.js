@@ -32,7 +32,7 @@ closeBtn.addEventListener('click', () => {
     popup.classList.add("overlay");
 });
 
-newComment.addEventListener('click', async (e) => {
+newComment.addEventListener('click', (e) => {
     e.preventDefault;
     const commentor = document.querySelector('#username').value;
     const comment = document.querySelector('#comment').value;
@@ -40,7 +40,8 @@ newComment.addEventListener('click', async (e) => {
       e.preventDefault();
       console.log("oops!");
     } else {
-      await addComment("item2", commentor, comment);
+      addComment("item2", commentor, comment);
+      getComment("item2");
       commentForm.reset();
     }
 });
