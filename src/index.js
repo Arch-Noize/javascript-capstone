@@ -4,7 +4,7 @@ import { updateLikes, updateAllLikes } from './modules/like.js';
 
 const invAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/app/';
 const pokeAPI = 'https://pokeapi.co/api/v2/pokemon';
-const projectID = 'dSv5DdTGl6SZHdXDAlEr'; // Replace with your actual project ID
+const projectID = 'dSv5DdTGl6SZHdXDAlEr';
 
 const likes = {};
 
@@ -79,19 +79,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function handleCommentsButtonClick(event) {
         if (event.target.classList.contains("commentsButton")) {
-            // Show comments popup
+        
             const itemDiv = event.target.closest(".like");
             const item_id = itemDiv.getAttribute("data-like");
-            // Implement the logic to show comments popup here
+          
         }
     }
 
     async function handleReservationsButtonClick(event) {
         if (event.target.classList.contains("reservationsButton")) {
-            // Show reservations popup
+           
             const itemDiv = event.target.closest(".like");
             const item_id = itemDiv.getAttribute("data-like");
-            // Implement the logic to show reservations popup here
+           
         }
     }
 
@@ -120,12 +120,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // Event listeners for button clicks
+    
     itemsContainer.addEventListener("click", handleLikeButtonClick);
     itemsContainer.addEventListener("click", handleCommentsButtonClick);
     itemsContainer.addEventListener("click", handleReservationsButtonClick);
 
-    // Initialize the page
+
     await fetchLikesFromAPIExternal();
     await populateItemsContainer();
 });
