@@ -1,6 +1,6 @@
 import { invAPI } from './api.js';
 
-const reservationURL = `${invAPI}comments?item_id=`;
+const reservationURL = `${invAPI}reservations?item_id=`;
 
 const getReservation = async (id) => {
   const res = await fetch(reservationURL + id);
@@ -16,11 +16,13 @@ const getReservation = async (id) => {
 //   })
 // }
 
-const addReservation = async (id, user, desc) => {
+const addReservation = async (id, name, dateStart, dateEnd) => {
   const res = await fetch(reservationURL + id, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-    body: JSON.stringify({ item_id: id, username: user, comment: desc }),
+    body: JSON.stringify({
+      item_id: id, username: name, date_start: dateStart, date_end: dateEnd,
+    }),
   });
   const data = await res.json();
   return data.result;
