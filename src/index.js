@@ -17,10 +17,10 @@ const list = document.querySelector('#reservation-list');
 //   }
 // };
 
-const displayComment = async () => {
-  const commentList = await getReservation('item2');
-  commentList.forEach((item) => {
-    list.innerHTML += `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`;
+const displayReservation = async () => {
+  const reservationList = await getReservation('item2');
+  reservationList.forEach((item) => {
+    list.innerHTML += `<li class="comment"> ${item.username}: ${item.date_start} (${item.date_end})`;
   });
 };
 
@@ -47,4 +47,4 @@ newReservation.addEventListener('click', (e) => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', displayComment());
+document.addEventListener('DOMContentLoaded', displayReservation());
