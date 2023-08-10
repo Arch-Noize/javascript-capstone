@@ -45,7 +45,8 @@ newComment.addEventListener('click', (e) => {
       console.log("oops!");
     } else {
       addComment("item4", commentor, comment);
-      getComment("item4");
+      list.innerHTML = '';
+      displayComment();
       commentForm.reset();
     }
 });
