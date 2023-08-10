@@ -5,7 +5,7 @@ import { getComment , addComment } from './modules/comment';
 const pokeData = document.querySelector('#pokemon-data');
 const newComment = document.querySelector('#add-comment');
 const commentForm = document.querySelector('.comment-section');
-const test = document.querySelector('.test');
+const commentBtn = document.querySelector('.comment-btn');
 const popup = document.querySelector('#popup');
 const closeBtn = document.querySelector("#close-btn");
 const list = document.querySelector("#comment-list");
@@ -24,7 +24,7 @@ const displayComment = async () => {
   })
 }
 
-test.addEventListener('click', () => {
+commentBtn.addEventListener('click', () => {
     popup.classList.remove("overlay");
 });
 
