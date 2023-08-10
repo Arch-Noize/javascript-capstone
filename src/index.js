@@ -1,8 +1,8 @@
 import './index.css';
-import { invAPI, getPokemon } from './modules/api.js';
+import { getPokemon } from './modules/api.js';
 
 const list = document.querySelector('.pokemon-data');
-const test = document.querySelector('.test');
+const reservation = document.querySelector('.reserve');
 
 for (let i = 1; i <= 10; i += 1) {
   const pokemon = await getPokemon(i);
