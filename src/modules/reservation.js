@@ -1,23 +1,23 @@
 import { invAPI } from './api.js';
 
-const commentURL = invAPI + 'comments?item_id=';
+const reservationURL = `${invAPI}comments?item_id=`;
 
-const getComment = async (id) => {
-  const res = await fetch(commentURL + id);
+const getReservation = async (id) => {
+  const res = await fetch(reservationURL + id);
   const data = await res.json();
   console.log(data.result);
   return data.result;
 };
 
-// const displayComment = async () => {
-//   const commentList = await getComment();
-//   commentList.forEach((item) => {
+// const displayReservation = async () => {
+//   const reservationList = await getReservation();
+//   reservationList.forEach((item) => {
 
 //   })
 // }
 
-const addComment = async (id, user, desc) => {
-  const res = await fetch(commentURL+id, {
+const addReservation = async (id, user, desc) => {
+  const res = await fetch(reservationURL + id, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     body: JSON.stringify({ item_id: id, username: user, comment: desc }),
@@ -26,4 +26,4 @@ const addComment = async (id, user, desc) => {
   return data.result;
 };
 
-export {getComment, addComment}
+export { getReservation, addReservation };

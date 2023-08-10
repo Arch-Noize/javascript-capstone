@@ -21,7 +21,6 @@ input::placeholder {
 }
 
 button {
-  border: none;
   padding: 0.5em;
   border: 2px solid black;
   background-color: #fff;
@@ -69,7 +68,7 @@ li {
 
 /* Comment Pop-up */
 
-.overlay {
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -79,9 +78,9 @@ li {
   transform: scale(0);
   transition: all 0.6s ease-in-out;
   backdrop-filter: blur(6px);
-}
+} */
 
-.comment-card {
+.reservation-card {
   position: fixed;
   display: flex;
   width: 420px;
@@ -99,6 +98,6 @@ li {
   transition: all 0.6s ease-in-out;
 }
 
-.comment-section > * {
+.reservation-form > * {
   margin-bottom: 20px;
 }
