@@ -1,103 +1,68 @@
- @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-Universal Selectors 
-*{
-  box-sizing: border-box;
-  font-family: 'Varela Round', 'Times New Roman', Times, serif;
-  font-weight: 600;
-}
-
-*:focus {
-  outline: none !important;
-}
-
-input::placeholder {
-  border: none;
-  font-size: 1em;
-  font-style: italic;
-}
-
-button {
-  border: none;
-  padding: 0.5em;
-  background-color: #fff;
-  transition: all 0.3s ease-in-out;
-}
-
-button:hover {
-  background-color: #d0d0d0;
-}
-
-button:active {
-  background-color: #999999;
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  gap: 8px;
-}
-
-li {
-  padding: 0.2em;
-  margin-bottom: 5px;
-}
-
-
-.fa fa-thumbs-up{
-  font-size: 100px;
-}
-
-.item {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  text-align: left;
-}
-
-.item {
-
-  padding: 1em;
-  background-color: #f0f0f0;
-}
-
-.columns-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin: 20px;
+html, body, div, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, figure, figcaption, a, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  font-family: 'Varela Round', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav li {
+  margin-right: 20px;
+}
+
+
+footer {
+  background-color: #f0f0f0;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .itemsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 20px 0;
+  padding: 0 10px;
 }
 
 .like {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  width: 30%;
+  width: calc(33.33% - 20px); 
   box-sizing: border-box;
 }
 
-.like h3 {
-  margin: 0;
+.pokemonImage {
+  max-width: 100%;
+  height: auto;
 }
 
-.likesCount {
-  font-weight: bold;
-  margin-right: 5px;
+.like h3 {
+  margin: 10px 0;
 }
 
 .likeButton {
@@ -108,6 +73,15 @@ body {
   color: #333;
 }
 
-.likeButton {
-  font-size: 20px;
+.likeCount {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.likeButton:hover {
+  color: #d0d0d0;
+}
+
+.likeButton:active {
+  color: #999999;
 }
