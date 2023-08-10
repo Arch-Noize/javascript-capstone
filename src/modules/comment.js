@@ -1,6 +1,6 @@
 import { invAPI } from './api.js';
 
-const commentURL = invAPI + 'comments?item_id=';
+const commentURL = `${invAPI}comments?item_id=`;
 
 const getComment = async (id) => {
   const res = await fetch(commentURL + id);
@@ -8,24 +8,17 @@ const getComment = async (id) => {
   return data;
 };
 
-// const displayComment = async () => {
-//   const commentList = await getComment();
-//   commentList.forEach((item) => {
-
-//   })
-// }
-
 const addComment = async (id, user, desc) => {
-  const res = await fetch(commentURL+id, {
+  const res = await fetch(commentURL + id, {
     method: 'POST',
-    headers: { 
+    headers: {
       'Content-Type': 'application/json; charset=UTF-8',
-      'Accept': 'application/json; charset=UTF-8'
-   },
+      Accept: 'application/json; charset=UTF-8',
+    },
     body: JSON.stringify({ item_id: id, username: user, comment: desc }),
   });
   const data = await res.json();
   return data;
 };
 
-export {getComment, addComment}
+export { getComment, addComment };

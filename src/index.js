@@ -1,10 +1,10 @@
 import './index.css';
 import { getPokemon } from './modules/api.js';
-import { getComment , addComment } from './modules/comment';
+import { getComment , addComment } from './modules/comment.js';
 
 const pokeData = document.querySelector('#pokemon-data');
 const newComment = document.querySelector('#add-comment');
-const commentForm = document.querySelector('.comment-section');
+const commentForm = document.querySelector('#comment-form');
 const commentBtn = document.querySelector('.comment-btn');
 const popup = document.querySelector('#popup');
 const closeBtn = document.querySelector("#close-btn");
@@ -18,19 +18,23 @@ const displayPoke = async () => {
 };
 
 const displayComment = async () => {
-  const commentList = await getComment("item2");
+  const commentList = await getComment("item4");
   commentList.forEach((item) => {
     list.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
   })
 }
 
 commentBtn.addEventListener('click', () => {
-    popup.classList.remove("overlay");
+  popup.classList.remove("overlay");
 });
 
 closeBtn.addEventListener('click', () => {
-    popup.classList.add("overlay");
+  popup.classList.add("overlay");
 });
+
+// const commentModal = () => {
+
+// }
 
 newComment.addEventListener('click', (e) => {
     e.preventDefault;
@@ -40,8 +44,8 @@ newComment.addEventListener('click', (e) => {
       e.preventDefault();
       console.log("oops!");
     } else {
-      addComment("item2", commentor, comment);
-      getComment("item2");
+      addComment("item4", commentor, comment);
+      getComment("item4");
       commentForm.reset();
     }
 });
