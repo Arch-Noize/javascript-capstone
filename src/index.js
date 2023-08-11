@@ -21,6 +21,32 @@ const displayPoke = async () => {
   }
 };
 
+/*
+Make a "section" target and dynamically display comments or reservation depending of 
+what was pressed
+
+createComment?
+commentSection.innerHTML = `
+    <h3>
+    Comments!
+    </h3>
+    <ul id="comment" class="list">
+
+    </ul>
+    <form id="comment-form">
+    <input type="text" id="username" placeholder="Please leave a name" autocomplete="off">
+    <input type="text" id="comment" placeholder="Please add a comment" autocomplete="off">
+    </form>
+    <button id="add-comment">Comment</button>
+  `
+
+  const title = document.createElement("h3")
+  const ul = document.createElement("ul")
+  const form = document.createElement("form")
+  
+
+*/
+
 const displayComment = async () => {
   console.log("hi, this is a comment!")
   const commentList = await getComment("item5");
