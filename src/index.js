@@ -1,11 +1,6 @@
 import './index.css';
-import { fetchItemsFromAPI, fetchLikesFromAPI, updateLikesOnAPI, getPokemon } from './modules/api.js';
-import { updateLikes, updateAllLikes, fetchLikesFromAPIExternal, saveLikesToAPI } from './modules/like.js';
-import { addLike , getLikes } from './modules/like-testing';
-
-const invAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/app/dSv5DdTGl6SZHdXDAlEr';
-
-const likes = {};
+import { getPokemon } from './modules/api.js';
+import { addLike , getLikes } from './modules/like.js';
 
 const populateItemsContainer = async () => {
     const itemsContainer = document.querySelector(".itemsContainer");
@@ -20,7 +15,6 @@ const populateItemsContainer = async () => {
         const itemData = { id: `${index + 1}`, title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`};
         const itemElement = createItemElement(itemData);
         itemsContainer.appendChild(itemElement);
-        likes[itemData.id] = itemData.likes;
     })
 }
 
@@ -64,7 +58,7 @@ const createItemElement = (itemData) => {
 document.addEventListener("DOMContentLoaded", async () => {
     const itemsContainer = document.querySelector(".itemsContainer");
 
-    async function handleLikeButtonClick(event) {
+    const handleLikeButtonClick = async (event) => {
         if (event.target.classList.contains("likeButton")) {
             const itemDiv = event.target.closest(".like");
             const item_id = itemDiv.getAttribute("data-like");
@@ -92,18 +86,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             const item_id = itemDiv.getAttribute("data-like");
         }
     }
-
-    fetchLikesFromAPIExternal();
-
-    saveLikesToAPI();
-
     
     itemsContainer.addEventListener("click", handleLikeButtonClick);
     itemsContainer.addEventListener("click", handleCommentsButtonClick);
     itemsContainer.addEventListener("click", handleReservationsButtonClick);
 
-    await fetchLikesFromAPIExternal();
-    await populateItemsContainer();
+    populateItemsContainer();
 });
 
 
