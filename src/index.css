@@ -1,72 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-/* Universal Selectors */
-
-* {
-  box-sizing: border-box;
-  font-family: 'Varela Round', 'Times New Roman', Times, serif;
-  font-weight: 600;
+html, body, div, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, figure, figcaption, a, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-*:focus {
-  outline: none !important;
+body {
+  font-family: 'Varela Round', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
-
-input[type="text"] {
-  border: none;
-  font-size: 1em;
-}
-
-input::placeholder {
-  border: none;
-  font-size: 1em;
-  font-style: italic;
-}
-
-button {
-  border: none;
-  padding: 0.5em;
-  border: 2px solid black;
-  background-color: #fff;
-  transition: all 0.3s ease-in-out;
-}
-
-button:hover {
-  background-color: #d0d0d0;
-}
-
-button:active {
-  background-color: #999999;
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  gap: 8px;
-}
-
-li {
-  padding: 0.2em;
-  margin-bottom: 5px;
-}
-
-/* Styling */
 
 .container {
-  padding: 0.5em;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+header nav ul {
   display: flex;
-  flex-wrap: nowrap;
+  list-style: none;
+}
+
+header nav li {
+  margin-right: 20px;
+}
+
+
+footer {
+  background-color: #f0f0f0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.itemsContainer {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  margin: 20px 0;
+  padding: 0 10px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  font-size: 0.8em;
-  padding: 1.3em;
-  text-justify: center;
-  border-top: 2px solid #000;
+.like {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(33.33% - 20px); 
+  box-sizing: border-box;
 }
 
+.pokemonImage {
+  max-width: 100%;
+  height: auto;
+}
+
+.like h3 {
+  margin: 10px 0;
+}
+
+.likeButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.likeCount {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.likeButton:hover {
+  color: #d0d0d0;
+}
+
+.likeButton:active {
+  color: #999999;
+}
