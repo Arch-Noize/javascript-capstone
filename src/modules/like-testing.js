@@ -17,12 +17,13 @@ const addLike = async (id) => {
  const getLikes = async (id) => {
     const res = await fetch(likeURL);
     const data = await res.json();
-    localStorage.setItem('likesList', JSON.stringify(data));
-    const findItem = await data.find((item) => item.item_id === id);
+    const findItem = data.find(({item_id}) => item_id == id);
+    console.log(findItem);
     if (findItem) {
       return findItem.likes;
+    } else {
+      return 0
     }
-    return 0;
 };
 
 export {addLike , getLikes}

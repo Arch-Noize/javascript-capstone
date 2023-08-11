@@ -14,8 +14,9 @@ const populateItemsContainer = async () => {
     for (let i = 1; i <= 10; i += 1){
         pokemon = await getPokemon(i);
     } 
-    pokemon.forEach((item, index = 1) => {
-        const itemData = { id: `${index + 1}`, title: item.name, image: item.sprites.front_default, likes: 0 };
+    pokemon.forEach(async (item, index) => {
+        const itemLikes = await getLikes(index);
+        const itemData = { id: `${index + 1}`, title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`};
         const itemElement = createItemElement(itemData);
         itemsContainer.appendChild(itemElement);
         likes[itemData.id] = itemData.likes;
