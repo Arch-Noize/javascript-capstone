@@ -115,3 +115,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     await fetchLikesFromAPIExternal();
     await populateItemsContainer();
 });
+
+
