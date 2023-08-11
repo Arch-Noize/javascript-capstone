@@ -2,13 +2,17 @@ import './index.css';
 import { getPokemon } from './modules/api.js';
 import { getComment , addComment } from './modules/comment.js';
 
-const pokeData = document.querySelector('#pokemon-data');
-const newComment = document.querySelector('#add-comment');
-const commentForm = document.querySelector('#comment-form');
-const commentBtn = document.querySelector('.comment-btn');
 const popup = document.querySelector('#popup');
 const closeBtn = document.querySelector("#close-btn");
-const list = document.querySelector("#comment-list");
+
+const commentSection = document.querySelector("#comment-section");
+const commentBtn = document.querySelector('#comment-btn');
+const newComment = document.querySelector('#add-comment');
+const commentForm = document.querySelector('#comment-form');
+const comments = document.querySelector("#comment");
+
+const reservationSection = document.querySelector("#reservation-section");
+const reservationBtn = document.querySelector("#res-btn");
 
 const displayPoke = async () => {
   for (let i = 1; i <= 10; i += 1) {
@@ -18,17 +22,24 @@ const displayPoke = async () => {
 };
 
 const displayComment = async () => {
+  console.log("hi, this is a comment!")
   const commentList = await getComment("item5");
   if (Object.keys(commentList).length = 0){
-    list.innerHTML = '';
+    comments.innerHTML = '';
   } else {
+
     commentList.forEach((item) => {
-    list.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
+        comments.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
     })
-};
+  };
+}
+
+const displayReservations = async () => {
+  console.log("hi, this is a reservation!")
 }
 
 commentBtn.addEventListener('click', () => {
+  displayComment();
   popup.classList.remove("overlay");
 });
 

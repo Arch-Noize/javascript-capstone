@@ -80,7 +80,7 @@ form > * {
   backdrop-filter: blur(6px);
 }
 
-.comment-card {
+.card {
   position: fixed;
   display: flex;
   width: 420px;
@@ -98,16 +98,16 @@ form > * {
   transition: all 0.6s ease-in-out;
 }
 
-#comment-section {
+.section {
   display: flex;
   flex-direction: column;
   align-self: center;
 }
 
-#comment-list {
+.list {
   flex-wrap: wrap;
 }
 
-#comment-list li {
+.list li {
   margin-bottom: 5px;
 }

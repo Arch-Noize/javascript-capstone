@@ -19,16 +19,11 @@
         </nav>
     </header>
     <h1>This is a test!</h1>
-    <button class="comment-btn">Press Me!</button>
-
-    <div>
-        <ul class="pokemon-data">
-
-        </ul>
-    </div>
+    <button id="comment-btn">Comments!</button>
+    <button id="res-btn">Reservations!</button>
 
     <div class="overlay" id="popup">
-        <div class="comment-card">
+        <div class="card">
             <div>
                 <h3> 
                     Pokemon 
@@ -40,21 +35,21 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="section" id="comment-section">
                 <h3>
                     Comments!
                 </h3>
-                <ul id="comment-list">
+                <ul id="comment" class="list">
 
                 </ul>
-            </div>
-
-            <div id="comment-section">
                 <form id="comment-form">
                     <input type="text" id="username" placeholder="Please leave a name" autocomplete="off">
                     <input type="text" id="comment" placeholder="Please add a comment" autocomplete="off">
                 </form>
                 <button id="add-comment">Comment</button>
+            </div>
+            <div class="section" id="reservation-section">
+
             </div>
         </div>
     </div>
