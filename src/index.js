@@ -3,6 +3,7 @@
 import './index.css';
 import { getPokemon } from './modules/api.js';
 import { addLike, getLikes } from './modules/like.js';
+import { getComment , addComment , displayComment , newComment } from './modules/comment.js';
 
 const createItemElement = (itemData) => {
   const itemDiv = document.createElement('div');
@@ -92,4 +93,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   //   itemsContainer.addEventListener('click', handleReservationsButtonClick);
 
   populateItemsContainer();
+});
+
+const popup = document.querySelector('#popup');
+const closeBtn = document.querySelector("#close-btn");
+const commentSection = document.querySelector("#comment-section");
+const commentBtn = document.querySelector('#comment-btn');
+const reservationSection = document.querySelector("#reservation-section");
+const reservationBtn = document.querySelector("#res-btn");
+
+commentBtn.addEventListener('click', () => {
+  popup.classList.remove("overlay");
+  displayComment();
+  commentSection.style.display = "flex";
+});
+
+reservationBtn.addEventListener('click', () => {
+  popup.classList.remove("overlay");
+  reservationSection.style.display = "flex";
+})
+
+closeBtn.addEventListener('click', () => {
+  popup.classList.add("overlay");
+  commentSection.style.display = "none";
+  reservationSection.style.display = "none";
 });

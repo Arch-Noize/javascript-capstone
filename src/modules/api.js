@@ -13,3 +13,4 @@ const getPokemon = async (id) => {
 export {
   invAPI, getPokemon,
 };
+
