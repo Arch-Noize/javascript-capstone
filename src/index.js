@@ -20,7 +20,7 @@ const list = document.querySelector('#reservation-list');
 const displayReservation = async () => {
   const reservationList = await getReservation('item2');
   reservationList.forEach((item) => {
-    list.innerHTML += `<li class="comment"> ${item.username}: ${item.date_start} (${item.date_end})`;
+    list.innerHTML += `<li class="reservationName"> ${item.username}: ${item.date_start} ${item.date_end}`;
   });
 };
 
@@ -37,14 +37,13 @@ newReservation.addEventListener('click', (e) => {
   const reserverName = document.querySelector('#reservationName').value;
   const startDate = document.querySelector('#startDate').value;
   const endDate = document.querySelector('#endDate').value;
+  getReservation('item2');
   if (!reserverName || !startDate || !endDate) {
     e.preventDefault();
     console.log('oops!');
   } else {
     addReservation('item2', reserverName, startDate, endDate);
-    getReservation('item2');
+    //reservation-popup.innerHTML = '';
     reservationForm.reset();
   }
 });
-
-document.addEventListener('DOMContentLoaded', displayReservation());

@@ -5,8 +5,8 @@ const reservationURL = `${invAPI}reservations?item_id=`;
 const getReservation = async (id) => {
   const res = await fetch(reservationURL + id);
   const data = await res.json();
-  console.log(data.result);
-  return data.result;
+  console.log(data);
+  return data;
 };
 
 // const displayReservation = async () => {
@@ -24,7 +24,7 @@ const addReservation = async (id, name, dateStart, dateEnd) => {
     }),
   });
   const data = await res.json();
-  return data.result;
+  return data;
 };
 
 export { getReservation, addReservation };
