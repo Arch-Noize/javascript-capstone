@@ -28,17 +28,29 @@ const addComment = async (id, user, desc) => {
 const newComment = document.querySelector('#add-comment');
 const commentForm = document.querySelector('#comment-form');
 const commentList = document.querySelector("#comment-list");
+const totalComments = document.querySelector("#comment-counter");
 
-const displayComment = async () => {
-  const commentData = await getComment("item5");
-  if (Object.keys(commentData).length = 0){
-    commentList.innerHTML = '';
+const displayComment = async (id) => {
+  const commentData = await getComment(id);
+  totalComments.textContent = `Comments (${commentData.length}):`
+  commentList.innerHTML = ''
+  if (commentData.error){
+    console.log("No comments!");
   } else {
     commentData.forEach((item) => {
         commentList.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
     })
   };
 }
+
+const commentCounter = () => {
+  const counter = document.querySelectorAll('.comment');
+  if (counter.length === undefined) {
+    totalComments.textContent = "(0)"
+  } else {
+    totalComments.textContent = `(${counter.length})`;
+  }
+};
 
 newComment.addEventListener('click', (e) => {
   e.preventDefault;
@@ -48,12 +60,11 @@ newComment.addEventListener('click', (e) => {
     e.preventDefault();
     console.log("oops!");
   } else {
-    addComment("item5", commentor, comment);
-    commentSection.innerHTML = '';
-    getComment();
-    displayComment();
+    addComment(2, commentor, comment);
+    displayComment(2);
+    getComment(2);
     commentForm.reset();
   }
 });
 
-export { getComment, addComment , displayComment };
+export { getComment, addComment , displayComment , commentCounter};

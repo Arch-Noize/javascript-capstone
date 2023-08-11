@@ -20,27 +20,18 @@
 
     <h1>Pokemon, gotta catch 'em all!</h1>
     <div class="itemsContainer"></div>
-    <button id="comment-btn">Comments!</button>
-    <button id="res-btn">Reservations!</button>
 
     <div class="overlay" id="popup">
         <div class="card">
-            <div>
-                <h3> 
-                    Pokemon 
-                    <i id="close-btn" class="fa fa-times"></i>
-                </h3>
-                Stats
-                <ul id="pokestats">
-                    
-                </ul>
+            <div id="pokestats">
+
             </div>
 
             <div class="section" id="comment-section">
-                <h3>
-                    Comments!
+                <h3 id="comment-counter">
+                    
                 </h3>
-                <ul id="comment-list" class="comment-list">
+                <ul id="comment-list">
 
                 </ul>
                 <form id="comment-form">
@@ -53,7 +44,7 @@
                 <h3>
                     Reservations!
                 </h3>
-                <ul id="reservation" class="reservation-list">
+                <ul id="reservation">
                     
                 </ul>
                 <form id="reservation-form">
@@ -61,7 +52,7 @@
                     <input type="date" id="start-date" autocomplete="off">
                     <input type="date" id="end-date" autocomplete="off">
                 </form>
-                <button id="add-comment">Comment</button>
+                <button id="add-reservation">Reserve</button>
             </div>
         </div>
     </div>

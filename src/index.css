@@ -4,11 +4,12 @@
   box-sizing: border-box;
   font-family: 'Varela Round', Arial, Times, serif;
   font-weight: 600;
-  font-size: 16px;
   line-height: 1.6;
 }
 
-
+input {
+  width: 100%;
+}
 
 input[type="text"] {
   border: 2px solid black;
@@ -55,7 +56,6 @@ form > * {
   margin: 0 auto;
   padding: 0 20px;
 }
-
 
 header {
   background-color: #333;
@@ -151,9 +151,16 @@ footer {
   background: #fff;
   border: 2px solid black;
   border-radius: 8px;
-  margin: 3em;
+  margin: 2em;
   z-index: 10;
   transition: all 0.6s ease-in-out;
+}
+
+#pokestats {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .section {
@@ -170,13 +177,10 @@ footer {
 #comment-list {
   display: flex;
   flex-direction: column;
-}
-
-.list {
   flex-wrap: wrap;
 }
 
-.list li {
+.comment {
   margin-bottom: 5px;
 }
 
