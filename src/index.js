@@ -11,9 +11,10 @@ const populateItemsContainer = async () => {
     const itemsContainer = document.querySelector(".itemsContainer");
     let pokemon = [];
 
-    for (let i = 1; i <= 10; i += 1){
+
+    for (let i = 1; i <= 15; i += 1){
         pokemon = await getPokemon(i);
-    } 
+    }
     pokemon.forEach(async (item, index) => {
         const itemLikes = await getLikes(index);
         const itemData = { id: `${index + 1}`, title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`};
@@ -24,18 +25,6 @@ const populateItemsContainer = async () => {
 }
 
 const createItemElement = (itemData) => {
-    // const itemDiv = `
-    // <div class="like" data-like="${itemData.id}">
-    //     <h3>
-    //     ${itemData.title}
-    //     </h3>
-    //     <img src="${itemData.image}" alt="${itemData.title}">
-    //     <button class="likeButton"> &#x1F44D; </button>
-    //     <p class="likeCount">Likes: ${itemData.likes} </p>
-    //     <button class="commentsButton"> Comments </button>
-    //     <button class="reservationsButton"> Reservations </button>
-    // </div>
-    // `
 
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("like");
