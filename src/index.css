@@ -99,15 +99,18 @@ form > * {
 }
 
 .section {
-  display: flex;
+  display: none;
+}
+
+#comment-section {
+  display: none;
   flex-wrap: wrap;
   flex-direction: column;
   align-self: center;
 }
 
-#comment-section {
+#comment-list {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 
