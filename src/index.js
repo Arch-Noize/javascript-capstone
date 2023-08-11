@@ -1,32 +1,41 @@
 import './index.css';
-import { fetchItemsFromAPI, fetchLikesFromAPI, updateLikesOnAPI } from './modules/api.js';
-import { updateLikes, updateAllLikes } from './modules/like.js';
+import { fetchItemsFromAPI, fetchLikesFromAPI, updateLikesOnAPI, getPokemon } from './modules/api.js';
+import { updateLikes, updateAllLikes, fetchLikesFromAPIExternal, saveLikesToAPI } from './modules/like.js';
+import { addLike , getLikes } from './modules/like-testing';
 
-const invAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/app/';
-const pokeAPI = 'https://pokeapi.co/api/v2/pokemon';
-const projectID = 'dSv5DdTGl6SZHdXDAlEr';
+const invAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/app/dSv5DdTGl6SZHdXDAlEr';
 
 const likes = {};
 
-async function populateItemsContainer() {
+const populateItemsContainer = async () => {
     const itemsContainer = document.querySelector(".itemsContainer");
+    let pokemon = [];
 
-    try {
-        const response = await fetch(`${pokeAPI}?limit=10`);
-        const data = await response.json();
-
-        data.results.forEach((pokemon, index) => {
-            const itemData = { id: `${index + 1}`, title: pokemon.name, likes: 0 };
-            const itemElement = createItemElement(itemData);
-            itemsContainer.appendChild(itemElement);
-            likes[itemData.id] = itemData.likes;
-        });
-    } catch (error) {
-        console.error('Error fetching Pokemon data from API:', error);
-    }
+    for (let i = 1; i <= 10; i += 1){
+        pokemon = await getPokemon(i);
+    } 
+    pokemon.forEach((item, index = 1) => {
+        const itemData = { id: `${index + 1}`, title: item.name, image: item.sprites.front_default, likes: 0 };
+        const itemElement = createItemElement(itemData);
+        itemsContainer.appendChild(itemElement);
+        likes[itemData.id] = itemData.likes;
+    })
 }
 
-function createItemElement(itemData) {
+const createItemElement = (itemData) => {
+    // const itemDiv = `
+    // <div class="like" data-like="${itemData.id}">
+    //     <h3>
+    //     ${itemData.title}
+    //     </h3>
+    //     <img src="${itemData.image}" alt="${itemData.title}">
+    //     <button class="likeButton"> &#x1F44D; </button>
+    //     <p class="likeCount">Likes: ${itemData.likes} </p>
+    //     <button class="commentsButton"> Comments </button>
+    //     <button class="reservationsButton"> Reservations </button>
+    // </div>
+    // `
+
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("like");
     itemDiv.setAttribute("data-like", itemData.id);
@@ -34,6 +43,10 @@ function createItemElement(itemData) {
     const itemTitle = document.createElement("h3");
     itemTitle.textContent = itemData.title;
     itemDiv.appendChild(itemTitle);
+
+    const itemImg = document.createElement("img");
+    itemImg.src = itemData.image;
+    itemDiv.appendChild(itemImg);
 
     const likeButton = document.createElement("button");
     likeButton.classList.add("likeButton");
@@ -66,65 +79,38 @@ document.addEventListener("DOMContentLoaded", async () => {
             const itemDiv = event.target.closest(".like");
             const item_id = itemDiv.getAttribute("data-like");
 
-            likes[item_id] = (likes[item_id] || 0) + 1;
-            updateLikes(item_id);
-            updateLikesOnAPI(item_id, likes[item_id]);
+            addLike(item_id);
+            const totalLikes = await getLikes(item_id);
+            console.log(totalLikes)
 
             const likeCountElement = itemDiv.querySelector(".likeCount");
-            likeCountElement.textContent = `Likes: ${likes[item_id]}`;
+            likeCountElement.textContent = `Likes: ${totalLikes}`;
 
-            saveLikesToAPI(likes);
         }
     }
 
-    async function handleCommentsButtonClick(event) {
+    const handleCommentsButtonClick = async (event) => {
         if (event.target.classList.contains("commentsButton")) {
-        
             const itemDiv = event.target.closest(".like");
             const item_id = itemDiv.getAttribute("data-like");
-          
         }
     }
 
-    async function handleReservationsButtonClick(event) {
+    const handleReservationsButtonClick = async (event) => {
         if (event.target.classList.contains("reservationsButton")) {
-           
             const itemDiv = event.target.closest(".like");
             const item_id = itemDiv.getAttribute("data-like");
-           
         }
     }
 
-    async function fetchLikesFromAPIExternal() {
-        try {
-            const response = await fetch(`${invAPI}${projectID}/likes`);
-            const data = await response.json();
-            Object.assign(likes, data);
-            updateAllLikes();
-        } catch (error) {
-            console.error('Error fetching likes from API:', error);
-        }
-    }
+    fetchLikesFromAPIExternal();
 
-    async function saveLikesToAPI(likesData) {
-        try {
-            await fetch(`${invAPI}${projectID}/likes`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(likesData),
-            });
-        } catch (error) {
-            console.error('Error saving likes to API:', error);
-        }
-    }
+    saveLikesToAPI();
 
     
     itemsContainer.addEventListener("click", handleLikeButtonClick);
     itemsContainer.addEventListener("click", handleCommentsButtonClick);
     itemsContainer.addEventListener("click", handleReservationsButtonClick);
-
 
     await fetchLikesFromAPIExternal();
     await populateItemsContainer();
