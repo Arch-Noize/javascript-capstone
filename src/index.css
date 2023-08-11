@@ -100,8 +100,15 @@ form > * {
 
 .section {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-self: center;
+}
+
+#comment-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .list {
