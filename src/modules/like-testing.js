@@ -1,3 +1,4 @@
+import { findCacheDir } from "webpack-dev-server";
 import { invAPI } from "./api.js";
 
 const likeURL = invAPI + 'likes';
@@ -17,12 +18,7 @@ const addLike = async (id) => {
  const getLikes = async (id) => {
     const res = await fetch(likeURL);
     const data = await res.json();
-    localStorage.setItem('likesList', JSON.stringify(data));
-    const findItem = await data.find((item) => item.item_id === id);
-    if (findItem) {
-      return findItem.likes;
-    }
-    return 0;
+    const findItem = data.find(({item_id}) => item_id == id);
 };
 
 export {addLike , getLikes}
