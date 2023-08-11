@@ -10,18 +10,6 @@ const getPokemon = async (id) => {
   return pokeArr;
 };
 
-const fetchLikesFromAPI = async () => {
-  const res = await fetch(`${invAPI}likes/`);
-  const data = await res.json();
-  console.log(data);
-  return data;
-}
-
-const updateLikesOnAPI = async (item_id) => {
-    const likeData = await fetchLikesFromAPI();
-    const likes = likeData.find((like) => like.item_id === item_id);
-    return likes.likes;
-}
-
-export { invAPI, getPokemon , fetchLikesFromAPI , updateLikesOnAPI}
-
+export {
+  invAPI, getPokemon,
+};
