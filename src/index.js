@@ -100,7 +100,6 @@ const populateItemsContainer = async () => {
     counter = pokecounter();
     itemCounter.textContent = `Pokemon (${counter})`;
   });
-
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
