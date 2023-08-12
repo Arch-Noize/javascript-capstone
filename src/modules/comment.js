@@ -25,46 +25,20 @@ const addComment = async (id, user, desc) => {
 
 /* Display Functions */
 
-const newComment = document.querySelector('#add-comment');
-const commentForm = document.querySelector('#comment-form');
 const commentList = document.querySelector("#comment-list");
 const totalComments = document.querySelector("#comment-counter");
 
 const displayComment = async (id) => {
   const commentData = await getComment(id);
-  totalComments.textContent = `Comments (${commentData.length}):`
   commentList.innerHTML = ''
   if (commentData.error){
-    console.log("No comments!");
+    totalComments.textContent = `Comments (0):`
   } else {
+    totalComments.textContent = `Comments (${commentData.length}):`
     commentData.forEach((item) => {
         commentList.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
     })
   };
 }
 
-const commentCounter = () => {
-  const counter = document.querySelectorAll('.comment');
-  if (counter.length === undefined) {
-    totalComments.textContent = "(0)"
-  } else {
-    totalComments.textContent = `(${counter.length})`;
-  }
-};
-
-newComment.addEventListener('click', (e) => {
-  e.preventDefault;
-  const commentor = document.querySelector('#username').value;
-  const comment = document.querySelector('#comment').value;
-  if (!commentor || !comment) {
-    e.preventDefault();
-    console.log("oops!");
-  } else {
-    addComment(2, commentor, comment);
-    displayComment(2);
-    getComment(2);
-    commentForm.reset();
-  }
-});
-
-export { getComment, addComment , displayComment , commentCounter};
+export { getComment, addComment , displayComment };
