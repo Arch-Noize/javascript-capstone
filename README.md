@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h1><b>Javascript Capstone Project!</b></h1>
+  <h1><b>Pokemon Javascript Capstone Project!</b></h1>
 </div>
 
 # 📗 Table of Contents
@@ -27,9 +27,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 🕹️ Javascript Capstone Project! <a name="about-project"></a>
+# 🕹️ Pokemon Javascript Capstone Project! <a name="about-project"></a>
 
-This project aims to build a webapp based on REST API to showcase several pictures, comments and other add-ons. 
+This project is a single-page webapp showing a bunch of cute Pokemons using [PokeAPI](https://pokeapi.co/docs/v2#pokemon-section), all with added [Involvement](https://microverse.notion.site/Involvement-API-869e60b5ad104603aa6db59e08150270) interactions of adding likes, comments and reservations.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -44,7 +44,10 @@ Website dispaly displays a leaderboard, using:
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
-Currently, this website only follows a small wireframe with no real functionality or features!
+This website includes:
+- Display of items from an API data base
+- Catching and adding items to API
+- Adding likes, comments and reservations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -52,7 +55,7 @@ Currently, this website only follows a small wireframe with no real functionalit
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-There's, currently, no live demo for this project!
+There's, currently, no live demo for this project, but there's a handy [video](https://drive.google.com/file/d/1yGVayk_Fz7M98o6E2Q13-tKdk3f26tGo/view?usp=sharing) of us presenting its features!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
