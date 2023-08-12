@@ -4,6 +4,7 @@ import './index.css';
 import { getPokemon } from './modules/api.js';
 import { addLike, getLikes } from './modules/like.js';
 import { getComment , addComment , displayComment , newComment } from './modules/comment.js';
+import pokecounter from './modules/pokecounter';
 
 const createItemElement = (itemData) => {
   const itemDiv = document.createElement('div');
@@ -43,7 +44,9 @@ const createItemElement = (itemData) => {
 
 const populateItemsContainer = async () => {
   const itemsContainer = document.querySelector('.itemsContainer');
+  const itemCounter = document.querySelector("#pokecounter")
   let pokemon = [];
+  let counter;
 
   for (let i = 1; i <= 15; i += 1) {
     pokemon = await getPokemon(i);
@@ -56,6 +59,11 @@ const populateItemsContainer = async () => {
     const itemElement = createItemElement(itemData);
     itemsContainer.appendChild(itemElement);
   });
+
+  setTimeout(() => {
+    counter = pokecounter();
+    itemCounter.textContent += ` (${counter})`;
+  }, 5000);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
