@@ -123,6 +123,7 @@ footer {
 .likeCount {
   font-weight: bold;
   margin-right: 5px;
+  margin-bottom: 15px
 }
 
 .likeButton:hover {
@@ -137,24 +138,25 @@ footer {
 
 .overlay {
   position: fixed;
+  display: flex;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  visibility: hidden;
-  transform: scale(0);
-  transition: all 0.6s ease-in-out;
+  top: 0;
+  transform: scale(1);
   backdrop-filter: blur(6px);
+  transition: all 0.6s ease-in-out;
+  overflow: hidden;
 }
 
 .card {
   position: fixed;
-  display: flex;
-  width: 420px;
-  max-width: 70%;
-  top: 30%;
+  display: none;
+  width: 90%;
+  top: 50%;
   left: 45%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
   padding: 1em;
   flex-direction: column;
   background: #fff;
@@ -171,6 +173,7 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 1em;
+  padding: 1em;
 }
 
 .section {

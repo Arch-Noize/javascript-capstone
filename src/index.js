@@ -123,18 +123,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const handleCommentsButtonClick = async (event) => {
     if (event.target.classList.contains('comment-btn')) {
+      const card = document.querySelector('.card');
+      card.style.display = "flex";
       const itemDiv = event.target.parentElement;
       const itemID = itemDiv.getAttribute('data-id');
       printPokeInfo(itemID);
       const comments = await getComment(itemID);
 
-      popup.classList.remove('overlay');
+      popup.classList.toggle('overlay');
       displayComment(itemID);
       commentSection.style.display = 'flex';
 
       const closeBtn = document.querySelector('#close-btn');
       closeBtn.addEventListener('click', () => {
-        popup.classList.add('overlay');
+        popup.classList.toggle('overlay');
+        card.style.display = "none";
         commentSection.style.display = 'none';
         reservationSection.style.display = 'none';
       });
@@ -151,7 +154,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           getComment(itemID);
           setTimeout(() => {
             displayComment(itemID);
-          }, 3500);
+          }, 500);
           commentForm.reset();
         }
       });
@@ -160,17 +163,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const handleResButtonClick = async (event) => {
     if (event.target.classList.contains('res-btn')) {
+      const card = document.querySelector('.card');
+      card.style.display = "flex";
       const itemDiv = event.target.parentElement;
       const itemID = itemDiv.getAttribute('data-id');
       printPokeInfo(itemID);
       const reservations = await getReservation(itemID);
-      popup.classList.remove('overlay');
+      popup.classList.toggle('overlay');
       displayReservation(itemID);
       reservationSection.style.display = 'flex';
 
       const closeBtn = document.querySelector('#close-btn');
       closeBtn.addEventListener('click', () => {
-        popup.classList.add('overlay');
+        popup.classList.toggle('overlay');
+        card.style.display = "none";
         commentSection.style.display = 'none';
         reservationSection.style.display = 'none';
       });
@@ -189,7 +195,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           getReservation(itemID);
           setTimeout(() => {
             displayReservation(itemID);
-          }, 3500);
+          }, 500);
           reservationForm.reset();
         }
       });
