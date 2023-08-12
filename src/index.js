@@ -97,12 +97,10 @@ const populateItemsContainer = async () => {
     };
     const itemElement = createItemElement(itemData);
     itemsContainer.appendChild(itemElement);
+    counter = pokecounter();
+    itemCounter.textContent = `Pokemon (${counter})`;
   });
 
-  setTimeout(() => {
-    counter = pokecounter();
-    itemCounter.textContent += ` (${counter})`;
-  }, 4000);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
