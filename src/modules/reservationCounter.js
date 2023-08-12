@@ -1,4 +1,4 @@
 export const reservationCounter = () => {
-    const counter = document.querySelectorAll('.reservationName');
+    const counter = document.querySelectorAll('.reservation');
     return counter.length;
   };
