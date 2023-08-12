@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,59 @@
     <link rel="stylesheet" href="index.css">
     <title>Capstone</title>
 <script defer src="runtime.js"></script><script defer src="main.js"></script></head>
+
 <body>
     <header class="container">
         <nav>
             <ul>
+                <li id="pokecounter">Pokemon</li>
                 <li>Comments</li>
                 <li>Reservation</li>
-                <li>Likes</li>
             </ul>
         </nav>
     </header>
+
+    <h1>Pokemon, gotta catch 'em all!</h1>
     <div class="itemsContainer"></div>
+
+    <div id="popup">
+        <div class="card">
+            <div id="pokestats">
+
+            </div>
+
+            <div class="section" id="comment-section">
+                <h3 id="comment-counter">
+                    
+                </h3>
+                <ul id="comment-list">
+
+                </ul>
+                <form id="comment-form">
+                    <input type="text" id="username" placeholder="Please leave a name" autocomplete="off">
+                    <input type="text" id="comment" placeholder="Please add a comment" autocomplete="off">
+                </form>
+                <button id="add-comment">Comment</button>
+            </div>
+            <div class="section" id="reservation-section">
+                <h3 id="res-counter">
+                    
+                </h3>
+                <ul id="reservation-list">
+    
+                </ul>
+                <div>
+                    <form class="reservation-form">
+                        <input type="text" id="reservationName" placeholder="Your Name">
+                        <input type="date" id="startDate" placeholder="Start Date">
+                        <input type="date" id="endDate" placeholder="End Date">
+                    </form>
+                    <button id="add-reservation">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="container footer">
         Created by Santiago Ruido, Pushkar Gautam, and Mumbere Habert under the MIT license.
     </footer>
@@ -25,3 +68,4 @@
     <script src="index.js"></script>
 </body>
 </html>
+
