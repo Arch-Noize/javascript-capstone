@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const handleCommentsButtonClick = async (event) => {
     if (event.target.classList.contains('comment-btn')) {
       const card = document.querySelector('.card');
-      card.style.display = "flex";
+      card.style.display = 'flex';
       const itemDiv = event.target.parentElement;
       const itemID = itemDiv.getAttribute('data-id');
       printPokeInfo(itemID);
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const closeBtn = document.querySelector('#close-btn');
       closeBtn.addEventListener('click', () => {
         popup.classList.toggle('overlay');
-        card.style.display = "none";
+        card.style.display = 'none';
         commentSection.style.display = 'none';
         reservationSection.style.display = 'none';
       });
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const handleResButtonClick = async (event) => {
     if (event.target.classList.contains('res-btn')) {
       const card = document.querySelector('.card');
-      card.style.display = "flex";
+      card.style.display = 'flex';
       const itemDiv = event.target.parentElement;
       const itemID = itemDiv.getAttribute('data-id');
       printPokeInfo(itemID);
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const closeBtn = document.querySelector('#close-btn');
       closeBtn.addEventListener('click', () => {
         popup.classList.toggle('overlay');
-        card.style.display = "none";
+        card.style.display = 'none';
         commentSection.style.display = 'none';
         reservationSection.style.display = 'none';
       });
