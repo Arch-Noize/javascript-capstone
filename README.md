@@ -40,6 +40,8 @@ Website dispaly displays a leaderboard, using:
 - CSS
 - Webpack
 - REST APIs
+ - PokeAPI
+ - Involvement API
 
 <!-- Features -->
 
