@@ -118,3 +118,4 @@ closeBtn.addEventListener('click', () => {
   commentSection.style.display = "none";
   reservationSection.style.display = "none";
 });
+
