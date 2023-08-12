@@ -53,7 +53,7 @@ const createItemElement = (itemData) => {
 const printPokeInfo = async (id) => {
   const pokestats = document.querySelector('#pokestats');
   let pokemon = [];
-  for (let i = 1; i <= 15; i += 1) {
+  for (let i = 1; i <= 9; i += 1) {
     pokemon = await getPokemon(i);
   }
   const stats = pokemon[id - 1];
@@ -87,7 +87,7 @@ const populateItemsContainer = async () => {
   let pokemon = [];
   let counter;
 
-  for (let i = 1; i <= 15; i += 1) {
+  for (let i = 1; i <= 9; i += 1) {
     pokemon = await getPokemon(i);
   }
   pokemon.forEach(async (item) => {
@@ -102,7 +102,7 @@ const populateItemsContainer = async () => {
   setTimeout(() => {
     counter = pokecounter();
     itemCounter.textContent += ` (${counter})`;
-  }, 5000);
+  }, 4000);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
