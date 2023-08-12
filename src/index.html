@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
     <title>Capstone</title>
 </head>
+
 <body>
     <header class="container">
         <nav>
@@ -51,17 +53,20 @@
             </div>
             <div class="section" id="reservation-section">
                 <h3>
-                    Reservations!
+                    Reservation <span><i id="close-btn" class="fa fa-times"></i></span>
                 </h3>
-                <ul id="reservation" class="reservation-list">
-                    
+                Stats
+                <ul class="reservation-list">
+    
                 </ul>
-                <form id="reservation-form">
-                    <input type="text" id="username" placeholder="Please leave a name" autocomplete="off">
-                    <input type="date" id="start-date" autocomplete="off">
-                    <input type="date" id="end-date" autocomplete="off">
-                </form>
-                <button id="add-comment">Comment</button>
+                <div>
+                    <form class="reservation-form">
+                        <input type="text" id="reservationName" placeholder="Your Name">
+                        <input type="date" id="startDate" placeholder="Start Date">
+                        <input type="date" id="endDate" placeholder="End Date">
+                    </form>
+                    <button id="add-reservation">Reserve</button>
+                </div>
             </div>
         </div>
     </div>
@@ -73,3 +78,4 @@
     <script src="index.js"></script>
 </body>
 </html>
+
