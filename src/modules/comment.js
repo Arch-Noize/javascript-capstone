@@ -25,20 +25,20 @@ const addComment = async (id, user, desc) => {
 
 /* Display Functions */
 
-const commentList = document.querySelector("#comment-list");
-const totalComments = document.querySelector("#comment-counter");
+const commentList = document.querySelector('#comment-list');
+const totalComments = document.querySelector('#comment-counter');
 
 const displayComment = async (id) => {
   const commentData = await getComment(id);
-  commentList.innerHTML = ''
-  if (commentData.error){
-    totalComments.textContent = `Comments (0):`
+  commentList.innerHTML = '';
+  if (commentData.error) {
+    totalComments.textContent = 'Comments (0):';
   } else {
-    totalComments.textContent = `Comments (${commentData.length}):`
+    totalComments.textContent = `Comments (${commentData.length}):`;
     commentData.forEach((item) => {
-        commentList.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
-    })
-  };
-}
+      commentList.innerHTML += `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`;
+    });
+  }
+};
 
-export { getComment, addComment , displayComment };
+export { getComment, addComment, displayComment };

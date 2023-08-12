@@ -1,17 +1,18 @@
-/* eslint-disable no-await-in-loop */
+/* eslint-disable no-await-in-loop , no-unused-vars */
 
 import './index.css';
 import { getPokemon } from './modules/api.js';
 import { addLike, getLikes } from './modules/like.js';
-import { getComment , addComment , displayComment , newComment } from './modules/comment.js';
-import { getReservation , addReservation , displayReservation} from './modules/reservation';
-import pokecounter from './modules/pokecounter';
+import {
+  getComment, addComment, displayComment,
+} from './modules/comment.js';
+import { getReservation, addReservation, displayReservation } from './modules/reservation.js';
+import pokecounter from './modules/pokecounter.js';
 
 const popup = document.querySelector('#popup');
-const commentSection = document.querySelector("#comment-section");
-const reservationSection = document.querySelector("#reservation-section");
-const reservationBtn = document.querySelector("#res-btn");
-
+const commentSection = document.querySelector('#comment-section');
+const reservationSection = document.querySelector('#reservation-section');
+const reservationBtn = document.querySelector('#res-btn');
 
 const createItemElement = (itemData) => {
   const itemDiv = document.createElement('div');
@@ -50,14 +51,20 @@ const createItemElement = (itemData) => {
 };
 
 const printPokeInfo = async (id) => {
-    const pokestats = document.querySelector("#pokestats");
-    let pokemon = [];
-    for (let i = 1; i <= 15; i += 1) {
-      pokemon = await getPokemon(i);
-    }
-    const stats = pokemon[id-1];
-    const statsData = {pokeID: stats.id, title: stats.name, image: stats.sprites.front_default, weight: stats.weight, height: stats.height}
-    pokestats.innerHTML = `
+  const pokestats = document.querySelector('#pokestats');
+  let pokemon = [];
+  for (let i = 1; i <= 15; i += 1) {
+    pokemon = await getPokemon(i);
+  }
+  const stats = pokemon[id - 1];
+  const statsData = {
+    pokeID: stats.id,
+    title: stats.name,
+    image: stats.sprites.front_default,
+    weight: stats.weight,
+    height: stats.height,
+  };
+  pokestats.innerHTML = `
     <h2> 
         ${statsData.title} 
         <i id="close-btn" class="fa fa-times"></i>
@@ -71,12 +78,12 @@ const printPokeInfo = async (id) => {
         <li>Weight: ${statsData.weight} hectograms</li>
         <li>Height: ${statsData.height} decimetres</li>
     </ul>
-    `
-}
+    `;
+};
 
 const populateItemsContainer = async () => {
   const itemsContainer = document.querySelector('.itemsContainer');
-  const itemCounter = document.querySelector("#pokecounter")
+  const itemCounter = document.querySelector('#pokecounter');
   let pokemon = [];
   let counter;
 
@@ -86,7 +93,7 @@ const populateItemsContainer = async () => {
   pokemon.forEach(async (item, index) => {
     const itemLikes = await getLikes(index);
     const itemData = {
-      id: item.id , title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`,
+      id: item.id, title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`,
     };
     const itemElement = createItemElement(itemData);
     itemsContainer.appendChild(itemElement);
@@ -113,103 +120,98 @@ document.addEventListener('DOMContentLoaded', async () => {
       likeCountElement.textContent = `Likes: ${totalLikes}`;
     }
   };
-  
+
   const handleCommentsButtonClick = async (event) => {
     if (event.target.classList.contains('comment-btn')) {
-        const itemDiv = event.target.parentElement;
-        const itemID = itemDiv.getAttribute('data-id');
-        printPokeInfo(itemID);
-        const comments = await getComment(itemID);
-        popup.classList.remove("overlay");
-        displayComment(itemID);
-        commentSection.style.display = "flex";
+      const itemDiv = event.target.parentElement;
+      const itemID = itemDiv.getAttribute('data-id');
+      printPokeInfo(itemID);
+      const comments = await getComment(itemID);
+      popup.classList.remove('overlay');
+      displayComment(itemID);
+      commentSection.style.display = 'flex';
 
-        const closeBtn = document.querySelector("#close-btn");
-        closeBtn.addEventListener('click', () => {
-          popup.classList.add("overlay");
-          commentSection.style.display = "none";
-          reservationSection.style.display = "none";
-        });
+      const closeBtn = document.querySelector('#close-btn');
+      closeBtn.addEventListener('click', () => {
+        popup.classList.add('overlay');
+        commentSection.style.display = 'none';
+        reservationSection.style.display = 'none';
+      });
 
-        const newComment = document.querySelector('#add-comment');
-        const commentForm = document.querySelector('#comment-form');
-        newComment.addEventListener('click', (e) => {
-          e.preventDefault;
-          const commentor = document.querySelector('#username').value;
-          const comment = document.querySelector('#comment').value;
-          if (!commentor || !comment) {
-            e.preventDefault();
-          } else {
-            addComment(itemID, commentor, comment);
-            getComment(itemID);
-            setTimeout(() => {
-              displayComment(itemID);
-            }, 3500);
-            commentForm.reset();
-          }
-        });
-    } 
+      const newComment = document.querySelector('#add-comment');
+      const commentForm = document.querySelector('#comment-form');
+      newComment.addEventListener('click', (e) => {
+        const commentor = document.querySelector('#username').value;
+        const comment = document.querySelector('#comment').value;
+        if (!commentor || !comment) {
+          e.preventDefault();
+        } else {
+          addComment(itemID, commentor, comment);
+          getComment(itemID);
+          setTimeout(() => {
+            displayComment(itemID);
+          }, 3500);
+          commentForm.reset();
+        }
+      });
+    }
   };
 
   const handleResButtonClick = async (event) => {
     if (event.target.classList.contains('res-btn')) {
-        const itemDiv = event.target.parentElement;
-        const itemID = itemDiv.getAttribute('data-id');
-        printPokeInfo(itemID);
-        const reservations = await getReservation(itemID);
-        popup.classList.remove("overlay");
-        displayReservation(itemID);
-        reservationSection.style.display = "flex";
+      const itemDiv = event.target.parentElement;
+      const itemID = itemDiv.getAttribute('data-id');
+      printPokeInfo(itemID);
+      const reservations = await getReservation(itemID);
+      popup.classList.remove('overlay');
+      displayReservation(itemID);
+      reservationSection.style.display = 'flex';
 
-        const closeBtn = document.querySelector("#close-btn");
-        closeBtn.addEventListener('click', () => {
-          popup.classList.add("overlay");
-          commentSection.style.display = "none";
-          reservationSection.style.display = "none";
-        });
+      const closeBtn = document.querySelector('#close-btn');
+      closeBtn.addEventListener('click', () => {
+        popup.classList.add('overlay');
+        commentSection.style.display = 'none';
+        reservationSection.style.display = 'none';
+      });
 
-        const newReservation = document.querySelector('#add-reservation');
-        const reservationForm = document.querySelector('.reservation-form');
-        newReservation.addEventListener('click', (e) => {
-          e.preventDefault;
-          const reserverName = document.querySelector('#reservationName').value;
-          const startDate = document.querySelector('#startDate').value;
-          const endDate = document.querySelector('#endDate').value;
-          getReservation('item2');
-          if (!reserverName || !startDate || !endDate) {
-            e.preventDefault();
-
-          } else {
-            addReservation(itemID, reserverName, startDate, endDate);
-            getReservation(itemID);
-            setTimeout(() => {
-              displayReservation(itemID);
-            }, 3500);
-            reservationForm.reset();
-          }
-        });
-    } 
+      const newReservation = document.querySelector('#add-reservation');
+      const reservationForm = document.querySelector('.reservation-form');
+      newReservation.addEventListener('click', (e) => {
+        const reserverName = document.querySelector('#reservationName').value;
+        const startDate = document.querySelector('#startDate').value;
+        const endDate = document.querySelector('#endDate').value;
+        getReservation('item2');
+        if (!reserverName || !startDate || !endDate) {
+          e.preventDefault();
+        } else {
+          addReservation(itemID, reserverName, startDate, endDate);
+          getReservation(itemID);
+          setTimeout(() => {
+            displayReservation(itemID);
+          }, 3500);
+          reservationForm.reset();
+        }
+      });
+    }
   };
 
   const handleCloseButton = async (event) => {
     if (event.target.classList.contains('close-btn')) {
-      popup.classList.add("overlay");
-      commentSection.style.display = "none";
-      reservationSection.style.display = "none";
+      popup.classList.add('overlay');
+      commentSection.style.display = 'none';
+      reservationSection.style.display = 'none';
     }
-  }
+  };
+
+  populateItemsContainer();
 
   itemsContainer.addEventListener('click', handleLikeButtonClick);
   itemsContainer.addEventListener('click', handleCommentsButtonClick);
   itemsContainer.addEventListener('click', handleResButtonClick);
   itemsContainer.addEventListener('click', handleCloseButton);
-
-  populateItemsContainer();
-
 });
 
 reservationBtn.addEventListener('click', () => {
-  popup.classList.remove("overlay");
-  reservationSection.style.display = "flex";
-})
-
+  popup.classList.remove('overlay');
+  reservationSection.style.display = 'flex';
+});

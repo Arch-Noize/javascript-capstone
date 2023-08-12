@@ -1,13 +1,12 @@
 import { invAPI } from './api.js';
 
-/* API Functions */ 
+/* API Functions */
 
 const reservationURL = `${invAPI}reservations?item_id=`;
 
 const getReservation = async (id) => {
   const res = await fetch(reservationURL + id);
   const data = await res.json();
-  console.log(data);
   return data;
 };
 
@@ -26,20 +25,19 @@ const addReservation = async (id, name, dateStart, dateEnd) => {
 /* Display functions */
 
 const resList = document.querySelector('.reservation-list');
-const totalReservations = document.querySelector("#res-counter");
+const totalReservations = document.querySelector('#res-counter');
 
 const displayReservation = async (id) => {
   const reservationData = await getReservation(id);
   resList.innerHTML = '';
   if (reservationData.error) {
-    totalReservations.textContent = `Reservations (0):`
+    totalReservations.textContent = 'Reservations (0):';
   } else {
-    totalReservations.textContent = `Reservations (${reservationData.length}):`
+    totalReservations.textContent = `Reservations (${reservationData.length}):`;
     reservationData.forEach((item) => {
       resList.innerHTML += `<li class="reservation"> ${item.username}: ${item.date_start} ${item.date_end}`;
     });
   }
 };
 
-
-export { getReservation, addReservation , displayReservation };
+export { getReservation, addReservation, displayReservation };

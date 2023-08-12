@@ -1,6 +1,6 @@
 /** @jest-environment jsdom */
 
-import { commentCounter } from './commentCounter.js';
+import commentCounter from './commentCounter.js';
 
 describe('Adding or removing items test', () => {
   let list;

@@ -1,10 +1,10 @@
 /** @jest-environment jsdom */
 
-import { reservationCounter } from './reservationCounter';
+import reservationCounter from './reservationCounter.js';
 
 describe('Adding or removing items test', () => {
   let list;
- 
+
   beforeEach(() => {
     document.body.innerHTML = '<ul class="reservation-list"> </ul>';
     list = document.querySelector('.reservation-list');

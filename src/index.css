@@ -5,6 +5,7 @@
   font-family: 'Varela Round', Arial, Times, serif;
   font-weight: 600;
   line-height: 1.6;
+  margin: 0;
 }
 
 input {
@@ -89,7 +90,7 @@ footer {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  width: calc(33.33% - 20px); 
+  width: calc(33.33% - 20px);
   box-sizing: border-box;
 }
 
@@ -100,6 +101,10 @@ footer {
 
 .like h3 {
   margin: 10px 0;
+}
+
+.like button {
+  margin-bottom: 10px;
 }
 
 .likeButton {
@@ -120,7 +125,7 @@ footer {
 }
 
 .likeButton:active {
-  color: #999999;
+  color: #999;
 }
 
 /* Comment Pop-up */
