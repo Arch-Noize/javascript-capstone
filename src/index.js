@@ -6,10 +6,16 @@ import { addLike, getLikes } from './modules/like.js';
 import { getComment , addComment , displayComment , newComment } from './modules/comment.js';
 import pokecounter from './modules/pokecounter';
 
+const popup = document.querySelector('#popup');
+const commentSection = document.querySelector("#comment-section");
+const reservationSection = document.querySelector("#reservation-section");
+const reservationBtn = document.querySelector("#res-btn");
+
+
 const createItemElement = (itemData) => {
   const itemDiv = document.createElement('div');
   itemDiv.classList.add('like');
-  itemDiv.setAttribute('data-like', itemData.id);
+  itemDiv.setAttribute('data-id', itemData.id);
 
   const itemTitle = document.createElement('h3');
   itemTitle.textContent = itemData.title;
@@ -30,17 +36,42 @@ const createItemElement = (itemData) => {
   itemDiv.appendChild(likeCount);
 
   const commentsButton = document.createElement('button');
-  commentsButton.classList.add('commentsButton');
+  commentsButton.classList.add('comment-btn');
   commentsButton.textContent = 'Comments';
   itemDiv.appendChild(commentsButton);
 
   const reservationsButton = document.createElement('button');
-  reservationsButton.classList.add('reservationsButton');
+  reservationsButton.classList.add('res-btn');
   reservationsButton.textContent = 'Reservations';
   itemDiv.appendChild(reservationsButton);
 
   return itemDiv;
 };
+
+const printPokeInfo = async (id) => {
+    const pokestats = document.querySelector("#pokestats");
+    let pokemon = [];
+    for (let i = 1; i <= 15; i += 1) {
+      pokemon = await getPokemon(i);
+    }
+    const stats = pokemon[id-1];
+    const statsData = {pokeID: stats.id, title: stats.name, image: stats.sprites.front_default, weight: stats.weight, height: stats.height}
+    pokestats.innerHTML = `
+    <h2> 
+        ${statsData.title} 
+        <i id="close-btn" class="fa fa-times"></i>
+    </h2>
+    <img src="${statsData.image}" alt="${statsData.title}">
+    <h3>
+        Stats
+    </h3>
+    <ul>
+        <li>ID: #${statsData.pokeID}</li>
+        <li>Weight: ${statsData.weight} hectograms</li>
+        <li>Height: ${statsData.height} decimetres</li>
+    </ul>
+    `
+}
 
 const populateItemsContainer = async () => {
   const itemsContainer = document.querySelector('.itemsContainer');
@@ -51,10 +82,10 @@ const populateItemsContainer = async () => {
   for (let i = 1; i <= 15; i += 1) {
     pokemon = await getPokemon(i);
   }
-  pokemon.forEach(async (item, index) => {
+  pokemon.forEach(async (item, index = 1) => {
     const itemLikes = await getLikes(index);
     const itemData = {
-      id: `${index + 1}`, title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`,
+      id: item.id , title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`,
     };
     const itemElement = createItemElement(itemData);
     itemsContainer.appendChild(itemElement);
@@ -72,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const handleLikeButtonClick = async (event) => {
     if (event.target.classList.contains('likeButton')) {
       const itemDiv = event.target.closest('.like');
-      const itemID = itemDiv.getAttribute('data-like');
+      const itemID = itemDiv.getAttribute('data-id');
 
       addLike(itemID);
       const totalLikes = await getLikes(itemID);
@@ -81,49 +112,80 @@ document.addEventListener('DOMContentLoaded', async () => {
       likeCountElement.textContent = `Likes: ${totalLikes}`;
     }
   };
+  
+  const handleCommentsButtonClick = async (event) => {
+    if (event.target.classList.contains('comment-btn')) {
+        const itemDiv = event.target.parentElement;
+        const itemID = itemDiv.getAttribute('data-id');
+        printPokeInfo(itemID);
+        const comments = await getComment(itemID);
+        popup.classList.remove("overlay");
+        displayComment(itemID);
+        commentSection.style.display = "flex";
 
-  //   const handleCommentsButtonClick = async (event) => {
-  //     if (event.target.classList.contains('commentsButton')) {
-  //       const itemDiv = event.target.closest('.like');
-  //       const itemID = itemDiv.getAttribute('data-like');
-  //     }
-  //   };
+        const closeBtn = document.querySelector("#close-btn");
+        closeBtn.addEventListener('click', () => {
+          popup.classList.add("overlay");
+          commentSection.style.display = "none";
+          reservationSection.style.display = "none";
+        });
 
-  //   const handleReservationsButtonClick = async (event) => {
-  //     if (event.target.classList.contains('reservationsButton')) {
-  //       const itemDiv = event.target.closest('.like');
-  //       const itemID = itemDiv.getAttribute('data-like');
-  //     }
-  //   };
+        const newComment = document.querySelector('#add-comment');
+        const commentForm = document.querySelector('#comment-form');
+        newComment.addEventListener('click', (e) => {
+          e.preventDefault;
+          const commentor = document.querySelector('#username').value;
+          const comment = document.querySelector('#comment').value;
+          if (!commentor || !comment) {
+            e.preventDefault();
+          } else {
+            addComment(itemID, commentor, comment);
+            getComment(itemID);
+            setTimeout(() => {
+              displayComment(itemID);
+            }, 3500);
+            commentForm.reset();
+          }
+        });
+    } 
+  };
+
+  const handleResButtonClick = async (event) => {
+    if (event.target.classList.contains('res-btn')) {
+        const itemDiv = event.target.parentElement;
+        const itemID = itemDiv.getAttribute('data-id');
+        printPokeInfo(itemID);
+        console.log("This is a reservation")
+        reservationSection.style.display = "flex";
+
+        const closeBtn = document.querySelector("#close-btn");
+        closeBtn.addEventListener('click', () => {
+          popup.classList.add("overlay");
+          commentSection.style.display = "none";
+          reservationSection.style.display = "none";
+        });
+    } 
+  };
+
+  const handleCloseButton = async (event) => {
+    if (event.target.classList.contains('close-btn')) {
+      popup.classList.add("overlay");
+      commentSection.style.display = "none";
+      reservationSection.style.display = "none";
+    }
+  }
 
   itemsContainer.addEventListener('click', handleLikeButtonClick);
-  //   itemsContainer.addEventListener('click', handleCommentsButtonClick);
-  //   itemsContainer.addEventListener('click', handleReservationsButtonClick);
+  itemsContainer.addEventListener('click', handleCommentsButtonClick);
+  itemsContainer.addEventListener('click', handleResButtonClick);
+  itemsContainer.addEventListener('click', handleCloseButton);
 
   populateItemsContainer();
-});
 
-const popup = document.querySelector('#popup');
-const closeBtn = document.querySelector("#close-btn");
-const commentSection = document.querySelector("#comment-section");
-const commentBtn = document.querySelector('#comment-btn');
-const reservationSection = document.querySelector("#reservation-section");
-const reservationBtn = document.querySelector("#res-btn");
-
-commentBtn.addEventListener('click', () => {
-  popup.classList.remove("overlay");
-  displayComment();
-  commentSection.style.display = "flex";
 });
 
 reservationBtn.addEventListener('click', () => {
   popup.classList.remove("overlay");
   reservationSection.style.display = "flex";
 })
-
-closeBtn.addEventListener('click', () => {
-  popup.classList.add("overlay");
-  commentSection.style.display = "none";
-  reservationSection.style.display = "none";
-});
 

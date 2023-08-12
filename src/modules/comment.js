@@ -25,35 +25,20 @@ const addComment = async (id, user, desc) => {
 
 /* Display Functions */
 
-const newComment = document.querySelector('#add-comment');
-const commentForm = document.querySelector('#comment-form');
 const commentList = document.querySelector("#comment-list");
+const totalComments = document.querySelector("#comment-counter");
 
-const displayComment = async () => {
-  const commentData = await getComment("item5");
-  if (Object.keys(commentData).length = 0){
-    commentList.innerHTML = '';
+const displayComment = async (id) => {
+  const commentData = await getComment(id);
+  commentList.innerHTML = ''
+  if (commentData.error){
+    totalComments.textContent = `Comments (0):`
   } else {
+    totalComments.textContent = `Comments (${commentData.length}):`
     commentData.forEach((item) => {
         commentList.innerHTML+= `<li class="comment"> ${item.username}: ${item.comment} (${item.creation_date})`
     })
   };
 }
-
-newComment.addEventListener('click', (e) => {
-  e.preventDefault;
-  const commentor = document.querySelector('#username').value;
-  const comment = document.querySelector('#comment').value;
-  if (!commentor || !comment) {
-    e.preventDefault();
-    console.log("oops!");
-  } else {
-    addComment("item5", commentor, comment);
-    commentSection.innerHTML = '';
-    getComment();
-    displayComment();
-    commentForm.reset();
-  }
-});
 
 export { getComment, addComment , displayComment };
