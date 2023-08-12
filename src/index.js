@@ -90,8 +90,8 @@ const populateItemsContainer = async () => {
   for (let i = 1; i <= 15; i += 1) {
     pokemon = await getPokemon(i);
   }
-  pokemon.forEach(async (item, index) => {
-    const itemLikes = await getLikes(index);
+  pokemon.forEach(async (item) => {
+    const itemLikes = await getLikes(item.id);
     const itemData = {
       id: item.id, title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`,
     };
@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const itemID = itemDiv.getAttribute('data-id');
       printPokeInfo(itemID);
       const comments = await getComment(itemID);
+
       popup.classList.remove('overlay');
       displayComment(itemID);
       commentSection.style.display = 'flex';

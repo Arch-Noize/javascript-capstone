@@ -24,7 +24,7 @@ const addReservation = async (id, name, dateStart, dateEnd) => {
 
 /* Display functions */
 
-const resList = document.querySelector('.reservation-list');
+const resList = document.querySelector('#reservation-list');
 const totalReservations = document.querySelector('#res-counter');
 
 const displayReservation = async (id) => {
