@@ -21,8 +21,9 @@ const getLikes = async (id) => {
   const findItem = data.find(({ item_id }) => item_id == id);
   if (findItem) {
     return findItem.likes;
+  } else {
+    return 0
   }
-  return 0;
 };
 
 export { addLike, getLikes };

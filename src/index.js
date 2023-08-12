@@ -4,6 +4,7 @@ import './index.css';
 import { getPokemon } from './modules/api.js';
 import { addLike, getLikes } from './modules/like.js';
 import { getComment , addComment , displayComment , newComment } from './modules/comment.js';
+import { getReservation , addReservation , displayReservation} from './modules/reservation';
 import pokecounter from './modules/pokecounter';
 
 const popup = document.querySelector('#popup');
@@ -82,7 +83,7 @@ const populateItemsContainer = async () => {
   for (let i = 1; i <= 15; i += 1) {
     pokemon = await getPokemon(i);
   }
-  pokemon.forEach(async (item, index = 1) => {
+  pokemon.forEach(async (item, index) => {
     const itemLikes = await getLikes(index);
     const itemData = {
       id: item.id , title: item.name, image: item.sprites.front_default, likes: `${itemLikes}`,
@@ -155,7 +156,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const itemDiv = event.target.parentElement;
         const itemID = itemDiv.getAttribute('data-id');
         printPokeInfo(itemID);
-        console.log("This is a reservation")
+        const reservations = await getReservation(itemID);
+        popup.classList.remove("overlay");
+        displayReservation(itemID);
         reservationSection.style.display = "flex";
 
         const closeBtn = document.querySelector("#close-btn");
@@ -163,6 +166,27 @@ document.addEventListener('DOMContentLoaded', async () => {
           popup.classList.add("overlay");
           commentSection.style.display = "none";
           reservationSection.style.display = "none";
+        });
+
+        const newReservation = document.querySelector('#add-reservation');
+        const reservationForm = document.querySelector('.reservation-form');
+        newReservation.addEventListener('click', (e) => {
+          e.preventDefault;
+          const reserverName = document.querySelector('#reservationName').value;
+          const startDate = document.querySelector('#startDate').value;
+          const endDate = document.querySelector('#endDate').value;
+          getReservation('item2');
+          if (!reserverName || !startDate || !endDate) {
+            e.preventDefault();
+
+          } else {
+            addReservation(itemID, reserverName, startDate, endDate);
+            getReservation(itemID);
+            setTimeout(() => {
+              displayReservation(itemID);
+            }, 3500);
+            reservationForm.reset();
+          }
         });
     } 
   };

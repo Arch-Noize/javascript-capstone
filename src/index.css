@@ -183,38 +183,9 @@ footer {
   margin-bottom: 5px;
 }
 
-/* Reservation Pop-up */
-
-.reservation-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  visibility: hidden;
-  transform: scale(0);
-  transition: all 0.6s ease-in-out;
-  backdrop-filter: blur(6px);
-}
-
-.reservation-card {
-  position: fixed;
-  display: flex;
-  width: 420px;
-  max-width: 70%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  padding: 1em;
+#reservation-section {
+  display: none;
+  flex-wrap: wrap;
   flex-direction: column;
-  background: #fff;
-  border: 2px solid black;
-  border-radius: 8px;
-  margin: 3em;
-  z-index: 10;
-  transition: all 0.6s ease-in-out;
-}
-
-.reservation-form > * {
-  margin-bottom: 20px;
+  align-self: center;
 }
